@@ -27,7 +27,7 @@ EOF
     bucket = "${get_env("TG_BUCKET_PREFIX", "")}-infrastructure"
 
     key = "terraform/${path_relative_to_include()}/terraform.tfstate"
-    region         = "${local.global.region}"
+    region         = "${local.global.bucket_region}"
     encrypt        = true
 
   }
