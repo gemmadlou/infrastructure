@@ -3,7 +3,7 @@ include "root" {
 }
 
 terraform {
-  source = "../..//terraform-modules/vpc-development"
+  source = "../..//terraform-modules/vpc-production"
 }
 
 locals {
@@ -12,6 +12,6 @@ locals {
 
 inputs = {
   aws_region = local.global.region
-  cidr_base = "10.0.16.0/20"
+  cidr_base = "10.0.0.0/20"
   cidr_newbits = 4
 }

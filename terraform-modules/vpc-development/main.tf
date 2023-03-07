@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "${var.aws_region}"
+}
+
 locals {
   name   = "ex-${replace(basename(path.cwd), "_", "-")}"
 
@@ -13,6 +17,7 @@ locals {
 ################################################################################
 
 module "vpc" {
+  
   source = "terraform-aws-modules/vpc/aws"
 
   name = local.name
@@ -29,7 +34,7 @@ module "vpc" {
     "${cidrsubnet(var.cidr_base, var.cidr_newbits, 1)}",
     "${cidrsubnet(var.cidr_base, var.cidr_newbits, 2)}",
   ]
-  
+
   public_subnets  = [
     "${cidrsubnet(var.cidr_base, var.cidr_newbits, 3)}",
     "${cidrsubnet(var.cidr_base, var.cidr_newbits, 4)}",
